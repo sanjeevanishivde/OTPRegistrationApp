@@ -25,42 +25,6 @@ This project implements secure mobile number verification via OTP, user registra
 
 ---
 
-## Installation & Setup
-
-### Backend
-
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/sanjeevanishivde/OTPRegistrationApp.git
-    ```
-2. Navigate to backend folder:
-    ```bash
-    cd OTPRegistrationApp/backend
-    ```
-3. Configure your MySQL database settings in `application.properties`  
-4. Build and run Spring Boot app:
-    ```bash
-    mvn clean install
-    mvn spring-boot:run
-    ```
-
-### Frontend
-
-1. Navigate to frontend folder:
-    ```bash
-    cd OTPRegistrationApp/frontend
-    ```
-2. Install dependencies:
-    ```bash
-    npm install
-    ```
-3. Run the React app:
-    ```bash
-    npm start
-    ```
-
----
-
 ## Usage
 
 - Open your browser and navigate to `http://localhost:3000` (React app)  
