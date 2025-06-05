@@ -1,0 +1,86 @@
+.otp-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #fff;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.otp-logo {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.otp-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.otp-address {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.otp-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.otp-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.otp-button-blue {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.otp-resend {
+  background: none;
+  border: none;
+  font-weight: bold;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.otp-red {
+  color: red;
+}
+
+.otp-green {
+  color: green;
+}
+
+.otp-error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: -8px;
+  margin-bottom: 10px;
+}
+
+.otp-registration-form {
+  margin-top: 20px;
+}
+.otp-button-green {
+  background-color: #007bff;
+  color: white;
+}
+.otp-register-link {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}

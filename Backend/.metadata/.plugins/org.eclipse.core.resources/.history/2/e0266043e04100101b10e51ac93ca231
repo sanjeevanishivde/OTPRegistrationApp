@@ -1,0 +1,11 @@
+package com.dsp.otpregistration.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.dsp.otpregistration.entity.RegistrationMaster;
+
+public interface RegistrationMasterRepository extends JpaRepository<RegistrationMaster, Long> {
+    Optional<RegistrationMaster> findByRegMobile(String regMobile);
+}

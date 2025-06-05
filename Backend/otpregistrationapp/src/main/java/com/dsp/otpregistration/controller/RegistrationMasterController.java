@@ -1,0 +1,73 @@
+package com.dsp.otpregistration.controller;
+
+import com.dsp.otpregistration.dto.RegistrationRequest;
+import com.dsp.otpregistration.entity.PersonEntry;
+import com.dsp.otpregistration.entity.RegistrationMaster;
+import com.dsp.otpregistration.repository.PersonEntryRepository;
+import com.dsp.otpregistration.repository.RegistrationMasterRepository;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:5173")  // Make sure CORS is allowed for React frontend
+public class RegistrationMasterController {
+
+    @Autowired
+    private RegistrationMasterRepository masterRepo;
+
+    @Autowired
+    private PersonEntryRepository entryRepo;
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody RegistrationRequest request) {
+        try {
+            System.out.println("Received RegistrationRequest: " + request);
+
+            Optional<RegistrationMaster> optional = masterRepo.findByMobile(request.getRegMobile());
+            RegistrationMaster rm = optional.orElseGet(() -> {
+                RegistrationMaster newMaster = new RegistrationMaster();
+                newMaster.setMobile(request.getRegMobile());
+                newMaster.setOtpVerified(false);
+                newMaster.setRegistrationComplete(false);
+                newMaster.setPaymentDone(false);
+                newMaster.setCreatedAt(LocalDateTime.now());
+                return masterRepo.save(newMaster);
+            });
+
+            PersonEntry person = new PersonEntry();
+            person.setFirstName(request.getName());
+
+            try {
+                person.setDob(LocalDate.parse(request.getDob())); // yyyy-MM-dd format expected
+            } catch (Exception e) {
+                return ResponseEntity.badRequest().body("Invalid date format. Use yyyy-MM-dd");
+            }
+
+            person.setRole(request.getRole());
+            person.setRegistration(rm);
+
+            entryRepo.save(person);
+            rm.setRegistrationComplete(true);
+            masterRepo.save(rm);
+
+            return ResponseEntity.ok("User registered successfully");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Registration failed: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/{mobile}/entries")
+    public List<PersonEntry> getPersonEntriesByMobile(@PathVariable String mobile) {
+        RegistrationMaster rm = masterRepo.findByMobile(mobile).orElseThrow();
+        return entryRepo.findByRegistration(rm);
+    }
+}

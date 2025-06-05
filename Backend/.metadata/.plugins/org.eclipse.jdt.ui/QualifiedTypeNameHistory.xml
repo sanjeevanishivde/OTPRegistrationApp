@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.dsp.otpregistration.entity.RegistrationMaster"/>
+    <fullyQualifiedTypeName name="com.dsp.otpregistration.service.RegistrationMasterService"/>
+    <fullyQualifiedTypeName name="com.dsp.otpregistration.repository.PersonEntryRepository"/>
+    <fullyQualifiedTypeName name="com.dsp.otpregistration.dto.RegistrationRequest"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="com.dsp.otpregistration.entity.PersonEntry"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+</qualifiedTypeNameHistroy>

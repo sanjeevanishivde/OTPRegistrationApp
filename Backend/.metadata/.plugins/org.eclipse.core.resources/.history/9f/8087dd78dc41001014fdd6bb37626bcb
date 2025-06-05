@@ -1,0 +1,43 @@
+
+package com.dsp.otpregistration.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dsp.otpregistration.dto.RegistrationRequest;
+import com.dsp.otpregistration.entity.PersonEntry;
+import com.dsp.otpregistration.service.RegistrationMasterService;
+
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "*")
+public class RegistrationMasterController {
+
+    @Autowired
+    private RegistrationMasterService registrationService;
+
+    @PostMapping("/register")
+    public String register(@RequestBody RegistrationRequest request) {
+        return registrationService.registerUser(request);
+    }
+
+    @GetMapping("/{mobile}/entries")
+    public List<PersonEntry> getPersonEntriesByMobile(@PathVariable String mobile) {
+        return registrationService.getPersonEntriesByMobile(mobile);
+    }
+
+    @GetMapping("/check-mobile")
+    public boolean checkMobileRegistered(@RequestParam String mobile) {
+        return registrationService.isMobileRegistered(mobile);
+    }
+}

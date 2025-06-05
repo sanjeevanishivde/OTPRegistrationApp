@@ -1,0 +1,60 @@
+package com.dsp.otpregistration.controller;
+
+import com.dsp.otpregistration.entity.RegistrationMaster;
+import com.dsp.otpregistration.repository.RegistrationMasterRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/otp")
+public class AuthController {
+
+    @Autowired
+    private RegistrationMasterRepository masterRepo;
+
+    @PostMapping("/generate")
+    public Map<String, Object> generate(@RequestBody Map<String, String> body) {
+        String mobile = body.get("mobile");
+        RegistrationMaster rm = masterRepo.findByRegMobile(mobile)
+                .orElseGet(() -> {
+                    RegistrationMaster m = new RegistrationMaster();
+                    m.setRegMobile(mobile);
+                    m.setCreatedAt(LocalDateTime.now());
+                    return masterRepo.save(m);
+                });
+
+        // In real world, send OTP here
+        rm.setOtpVerified(false);
+        masterRepo.save(rm);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", true);
+        return response;
+    }
+
+    @PostMapping("/resend")
+    public Map<String, Object> resend(@RequestBody Map<String, String> body) {
+        return generate(body);
+    }
+
+    @PostMapping("/validate")
+    public Map<String, Object> validate(@RequestBody Map<String, String> body) {
+        String mobile = body.get("mobile");
+        // In real implementation, verify OTP
+        RegistrationMaster rm = masterRepo.findByRegMobile(mobile).orElse(null);
+
+        Map<String, Object> res = new HashMap<>();
+        if (rm != null) {
+            rm.setOtpVerified(true);
+            masterRepo.save(rm);
+            res.put("success", true);
+        } else {
+            res.put("success", false);
+        }
+        return res;
+    }
+}

@@ -1,0 +1,28 @@
+package com.dsp.otpregistration.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Entity
+@Data
+@Getter
+@Setter
+public class RegistrationMaster {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String mobile;
+    private boolean otpVerified;
+    private boolean registrationComplete;
+    private boolean paymentDone;
+    private LocalDateTime createdAt;
+
+    @OneToMany(mappedBy = "registration")
+    private List<PersonEntry> people;
+}

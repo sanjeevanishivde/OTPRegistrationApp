@@ -1,0 +1,60 @@
+package com.dsp.otpregistration.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.dsp.otpregistration.dto.RegistrationRequest;
+import com.dsp.otpregistration.entity.PersonEntry;
+import com.dsp.otpregistration.entity.RegistrationMaster;
+import com.dsp.otpregistration.repository.PersonEntryRepository;
+import com.dsp.otpregistration.repository.RegistrationMasterRepository;
+
+@Service
+public class RegistrationMasterService {
+
+    @Autowired
+    private RegistrationMasterRepository masterRepo;
+
+    @Autowired
+    private PersonEntryRepository entryRepo;
+
+    public String registerUser(RegistrationRequest request) {
+        Optional<RegistrationMaster> existing = masterRepo.findByRegMobile(request.getRegMobile());
+
+        if (existing.isPresent()) {
+            return "Mobile number already registered.";
+        }
+
+        RegistrationMaster master = new RegistrationMaster();
+        master.setName(request.getName());
+        master.setDob(request.getDob());
+        master.setRegMobile(request.getRegMobile());
+        master.setRole(request.getRole());
+
+        // Save master first
+        RegistrationMaster savedMaster = masterRepo.save(master);
+
+        // Create associated person entry
+        PersonEntry person = new PersonEntry();
+        person.setFirstName(request.getName());
+        person.setDob(request.getDob());
+        person.setRole(request.getRole());
+        person.setRegistration(savedMaster);
+
+        entryRepo.save(person);
+
+        return "User registered successfully";
+    }
+
+    public boolean isMobileRegistered(String mobile) {
+        return masterRepo.findByRegMobile(mobile).isPresent();
+    }
+
+    public List<PersonEntry> getPersonEntriesByMobile(String mobile) {
+        RegistrationMaster master = masterRepo.findByRegMobile(mobile).orElseThrow(() -> new RuntimeException("Mobile not registered"));
+        return entryRepo.findByRegistration(master);
+    }
+}

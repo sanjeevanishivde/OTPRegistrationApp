@@ -1,0 +1,29 @@
+package com.dsp.otpregistration.service;
+
+import com.dsp.otpregistration.entity.RegistrationMaster;
+import com.dsp.otpregistration.repository.RegistrationMasterRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
+public class RegistrationMasterService {
+
+    @Autowired
+    private RegistrationMasterRepository repository;
+
+    public RegistrationMaster registerUser(RegistrationMaster registrationMaster) {
+        // You can add validation/business logic here before saving
+        return repository.save(registrationMaster);
+    }
+
+    public Optional<RegistrationMaster> findByMobile(String mobile) {
+        return repository.findByRegMobile(mobile);
+    }
+
+	public void saveRegistration(RegistrationMaster registrationData) {
+		// TODO Auto-generated method stub
+		
+	}
+}

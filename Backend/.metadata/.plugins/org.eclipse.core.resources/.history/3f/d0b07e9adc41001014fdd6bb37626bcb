@@ -1,0 +1,33 @@
+package com.dsp.otpregistration.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
+@Entity
+@Data
+@Getter
+@Setter
+public class RegistrationMaster {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;  // Add ID field as primary key
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String dob;  // Ideally use LocalDate but keeping String as you requested
+
+    @Column(nullable = false, unique = true)
+    private String regMobile;
+
+    @Column(nullable = false)
+    private String role;
+
+    @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PersonEntry> people;
+}

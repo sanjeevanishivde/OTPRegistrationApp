@@ -1,0 +1,110 @@
+/* FillDetailsPage.css */
+.fill-details-container {
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  border: 2px solid #305090;
+  width: 90%;
+  margin: 20px auto;
+}
+
+.school-logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.school-name {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.school-address {
+  margin: 10px 0;
+}
+
+.fill-details-btn {
+  background-color: #d4af37;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  margin: 15px 0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  background-color: #4a74c9;
+  color: white;
+  margin: 0 5px;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tab.active {
+  background-color: #2a5bbd;
+  font-weight: bold;
+}
+
+.form-section {
+  padding: 20px;
+  border: 2px solid #305090;
+  background-color: #f8f8f8;
+  margin-bottom: 20px;
+}
+
+.form-heading {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #2a5bbd;
+}
+
+.student-entry {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.student-entry input[type="text"],
+.student-entry input[type="date"],
+.input-field {
+  padding: 8px;
+  border: 2px solid #c6a64b;
+  min-width: 200px;
+}
+
+.add-btn {
+  background-color: #4a74c9;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.save-btn {
+  background-color: #4a74c9;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.error-msg {
+  color: red;
+  font-size: 0.9em;
+  margin-top: -8px;
+  margin-bottom: 10px;
+}

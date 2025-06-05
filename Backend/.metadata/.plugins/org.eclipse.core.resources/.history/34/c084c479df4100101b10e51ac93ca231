@@ -1,0 +1,22 @@
+package com.dsp.otpregistration.controller;
+
+import com.dsp.otpregistration.entity.RegistrationMaster;
+import com.dsp.otpregistration.service.RegistrationMasterService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "*")  // Allow CORS from all origins, customize as needed
+public class RegistrationMasterController {
+
+	    @Autowired
+	    private RegistrationMasterService registrationService;
+
+	    @PostMapping("/register")
+	    public ResponseEntity<String> register(@RequestBody RegistrationMaster registrationData) {
+	        registrationService.saveRegistration(registrationData);
+	        return ResponseEntity.ok("Registered successfully");
+	    }
+	}

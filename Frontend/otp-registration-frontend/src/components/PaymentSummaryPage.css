@@ -1,0 +1,131 @@
+.payment-container {
+  font-family: Arial, sans-serif;
+  border: 2px solid #2c3e70;
+  padding: 20px;
+  width: 90%;
+  margin: 30px auto;
+  text-align: center;
+  background-color: #fff;
+}
+
+.school-logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.payment-heading {
+  background-color: #ffc107;
+  color: white;
+  display: inline-block;
+  padding: 10px 30px;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 5px #aaa;
+}
+
+.details-box {
+  border: 2px solid #b38e00;
+  margin: 20px auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 700px;
+}
+
+.entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 4px;
+  color: black;
+}
+
+.icon.green {
+  background-color: #d8f3dc;
+  border: 2px solid #6c9c77;
+}
+
+.icon.orange {
+  background-color: #fdebd0;
+  border: 2px solid #dc7633;
+}
+
+.name,
+.id,
+.role {
+  flex: 1;
+  text-align: center;
+}
+
+.amount-box {
+  border: 2px solid #b38e00;
+  margin: 20px auto;
+  padding: 20px;
+  width: 60%;
+  max-width: 500px;
+  font-size: 16px;
+}
+
+.amount-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.amount-row.total {
+  font-weight: bold;
+}
+
+.initiate-btn {
+  background-color: #2e7d32;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.card-box {
+  background: #f5f5f5;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+}
+
+.card-box input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.success-page {
+  text-align: center;
+  padding: 40px;
+}
+
+.success-btn {
+  background-color: #007bff;
+  color: white;
+  font-size: 18px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: default;
+}

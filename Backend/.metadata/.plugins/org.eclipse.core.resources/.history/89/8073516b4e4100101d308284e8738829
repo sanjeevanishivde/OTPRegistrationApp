@@ -1,0 +1,11 @@
+package com.itv.dpsregistration.dto;
+
+import lombok.Data;
+
+@Data
+public class RegistrationRequest {
+    private String name;
+    private String dob; // we'll parse it
+    private String regMobile;
+    private String role;
+}

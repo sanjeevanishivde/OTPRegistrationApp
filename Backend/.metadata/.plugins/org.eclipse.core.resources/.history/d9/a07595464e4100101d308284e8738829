@@ -1,0 +1,23 @@
+package com.itv.dpsregistration.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Entity
+@Data
+public class RegistrationMaster {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String mobile;
+    private boolean otpVerified;
+    private boolean registrationComplete;
+    private boolean paymentDone;
+    private LocalDateTime createdAt;
+
+    @OneToMany(mappedBy = "registration")
+    private List<PersonEntry> people;
+}
