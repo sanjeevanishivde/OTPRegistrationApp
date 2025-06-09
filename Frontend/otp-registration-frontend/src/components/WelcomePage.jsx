@@ -14,7 +14,7 @@ const WelcomePage = ({ mobile }) => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        // Use the backend GET endpoint for person entries by mobile
+        
         const res = await axios.get(`http://localhost:8080/api/register/${mobile}/entries`);
         setMembers(res.data);
       } catch (err) {
@@ -32,7 +32,9 @@ const WelcomePage = ({ mobile }) => {
       <img src="/logo.png" alt="School Logo" className="school-logo" />
       <h2 className="school-name">Delhi Public School</h2>
       <p className="school-address">
-        Nyati Estate Rd, Nyati County, Mohammed Wadi, Pune, Autadwadi Handewadi, Maharashtra 411060
+       Nyati Estate Rd, Nyati County, Mohammed Wadi, Pune, Autadwadi Handewadi,
+       <br />
+       Maharashtra 411060
       </p>
 
       <div className="welcome-box">

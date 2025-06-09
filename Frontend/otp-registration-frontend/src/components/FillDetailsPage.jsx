@@ -60,7 +60,6 @@ const FillDetailsPage = () => {
     if (activeTab === 'firstParent') setActiveTab('secondParent');
     else if (activeTab === 'secondParent') setActiveTab('student');
     else if (activeTab === 'student') {
-      // Pass all data to payment page
       navigate('/payment', {
         state: {
           firstParent,

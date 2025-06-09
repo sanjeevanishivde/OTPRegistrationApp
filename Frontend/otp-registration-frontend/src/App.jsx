@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from
 import OTPLogin from './components/OTPLogin';
 import WelcomePage from './components/WelcomePage';
 import FillDetailsPage from './components/FillDetailsPage';
-import PaymentSummaryPage from './components/PaymentSummaryPage';
+import PaymentPage from './components/PaymentPage';
 
 function App() {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ function App() {
       <Route path="/" element={<OTPLogin onVerified={handleVerified} />} />
       <Route path="/welcome" element={<WelcomeWrapper />} />
       <Route path="/fill-details" element={<FillDetailsPage />} />
-      <Route path="/payment" element={<PaymentSummaryPage />} />
+      <Route path="/payment" element={<PaymentPage />} />
     </Routes>
   );
 }

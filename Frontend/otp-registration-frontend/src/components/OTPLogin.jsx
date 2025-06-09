@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; 
+import axios from 'axios';
 import './OTPLogin.css';
 
 const OTPLogin = ({ onVerified }) => {
@@ -17,7 +17,14 @@ const OTPLogin = ({ onVerified }) => {
     role: '',
   });
 
-  const isValidMobile = (mobile) => /^\d{10}$/.test(mobile);
+  // Updated validation to meet criteria:
+  // Starts with optional '0' or '91', then first digit 6-9, then 9 digits
+  const isValidMobile = (mobile) => {
+    const trimmed = mobile.trim();
+    const pattern = /^(0|91)?[6-9]\d{9}$/;
+    return pattern.test(trimmed);
+  };
+
   const isValidOTP = (otp) => /^\d{6}$/.test(otp);
 
   const generateRandomOTP = () => {
@@ -26,7 +33,11 @@ const OTPLogin = ({ onVerified }) => {
 
   const handleGenerate = () => {
     if (!isValidMobile(mobile)) {
-      setErrors({ ...errors, mobile: 'Mobile number must be 10 digits' });
+      setErrors({
+        ...errors,
+        mobile:
+          'Enter a valid mobile number starting with 6-9, optionally prefixed by 0 or 91.',
+      });
       return;
     }
     const newOTP = generateRandomOTP();
@@ -55,7 +66,11 @@ const OTPLogin = ({ onVerified }) => {
 
   const handleValidate = () => {
     if (!isValidMobile(mobile)) {
-      setErrors({ ...errors, mobile: 'Mobile number must be 10 digits' });
+      setErrors({
+        ...errors,
+        mobile:
+          'Enter a valid mobile number starting with 6-9, optionally prefixed by 0 or 91.',
+      });
       return;
     }
     if (!isValidOTP(otp)) {
@@ -70,7 +85,6 @@ const OTPLogin = ({ onVerified }) => {
     }
   };
 
-  // Auto-fill mobile in registration form when form is shown
   useEffect(() => {
     if (showRegistration) {
       setRegistrationData((prev) => ({ ...prev, regMobile: mobile }));
@@ -84,19 +98,21 @@ const OTPLogin = ({ onVerified }) => {
 
   const handleRegister = async () => {
     const { name, dob, regMobile, role } = registrationData;
-    if (!name || !dob || !/^\d{10}$/.test(regMobile) || !role) {
-      alert('Please fill in all registration fields correctly.');
+    if (!name || !dob || !isValidMobile(regMobile) || !role) {
+      alert(
+        'Please fill in all registration fields correctly. Mobile must start with 6-9 and can be prefixed with 0 or 91.'
+      );
       return;
     }
 
     try {
-      console.log("Sending registration data:", registrationData);
+      console.log('Sending registration data:', registrationData);
 
       const response = await axios.post('http://localhost:8080/api/register', {
         name,
         dob,
         regMobile,
-        role
+        role,
       });
 
       alert('Registration successful! You can now log in.');
@@ -115,7 +131,11 @@ const OTPLogin = ({ onVerified }) => {
     <div className="otp-container">
       <img src="/logo.png" alt="Logo" className="otp-logo" />
       <h2 className="otp-title">Delhi Public School</h2>
-      <p className="otp-address">Nyati Estate Rd, Nyati County, Pune</p>
+      <p className="otp-address">
+        Nyati Estate Rd, Nyati County, Mohammed Wadi, Pune, Autadwadi Handewadi,
+        <br />
+        Maharashtra 411060
+      </p>
 
       {!showRegistration ? (
         <>
@@ -158,7 +178,8 @@ const OTPLogin = ({ onVerified }) => {
           {errors.general && <p className="otp-error">{errors.general}</p>}
 
           <p className="otp-register-link" onClick={() => setShowRegistration(true)}>
-            Not Registered? <span style={{ color: 'blue', cursor: 'pointer' }}>Register Here</span>
+            Not Registered?{' '}
+            <span style={{ color: 'blue', cursor: 'pointer' }}>Register Here</span>
           </p>
         </>
       ) : (
@@ -201,7 +222,8 @@ const OTPLogin = ({ onVerified }) => {
           </button>
 
           <p className="otp-register-link" onClick={() => setShowRegistration(false)}>
-            Already Registered? <span style={{ color: 'blue', cursor: 'pointer' }}>Go Back</span>
+            Already Registered?{' '}
+            <span style={{ color: 'blue', cursor: 'pointer' }}>Go Back</span>
           </p>
         </div>
       )}

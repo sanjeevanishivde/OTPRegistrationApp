@@ -1,0 +1,217 @@
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.payment-container, .success-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 900px;
+  min-height: 400px;
+  padding: 30px 20px;
+  border: 2px solid #2c3e70;
+  background-color: #fff;
+  box-sizing: border-box;
+  margin: auto;
+  text-align: center;
+}
+
+.school-logo {
+  width: 100px;
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+}
+.success-logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.payment-heading {
+  background-color: #ffc107;
+  color: white;
+  display: inline-block;
+  padding: 10px 25px;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  margin-top: 10px !important;
+}
+
+.details-box, .amount-box, .card-box {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.details-box {
+  border: 1.5px solid #e0b800;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  margin: 8px 0;
+  border: 1px solid #e0b800;
+  background-color: #fff;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  border: 1px solid #bca100;
+}
+
+.green {
+  background-color: #d2f3da;
+  color: #2d7a35;
+}
+
+.orange {
+  background-color: #ffe5cc;
+  color: #e07b00;
+}
+
+.name {
+  flex: 1;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.id {
+  flex: 1;
+  text-align: center;
+}
+
+.role {
+  width: 100px;
+  text-align: right;
+}
+
+.amount-box {
+  border: 1.5px solid #e0b800;
+  padding: 15px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.amount-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.amount-row.total span:last-child {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.initiate-btn {
+  background-color: #2d7a35;
+  color: white;
+  padding: 10px 35px;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card-box {
+  margin-top: 30px;
+  background-color: #f5f5f5;
+  padding: 25px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.card-box h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.card-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.card-box button {
+  width: 100%;
+  background-color: #2d7a35;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.card-box button:hover {
+  background-color: #1c5e26;
+}
+
+.success-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+.success-address {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.success-icon {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+.success-message {
+  padding: 12px 25px;
+  font-size: 16px;
+  background-color: #1e6fb2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: default;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
